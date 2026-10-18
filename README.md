@@ -12,7 +12,7 @@ Die ersten beiden Projekte bleiben unverändert. Die dritte Version wird ausschl
 
 ## Gestaltung und Inhalt
 
-Filmischer Einstieg, native magnetische Kapitel auf Desktop und Mobil, horizontale Fotogalerie, Filmraum, sechs reale virtuelle Rundgänge, Digital Lab, KI-Angebotsentwurf, Team-Biografien und Kontakt. Acht Foto-Unterseiten und vier Rechtsseiten ergänzen die deutsche und englische Startseite.
+Originalschriften Michroma und Eurostile, Schwarz-Weiß und Originalorange statt Beige, dekorativer Zusatzstern entfernt. Filmischer Einstieg, native magnetische Kapitel auf Desktop und Mobil, große Fotowand mit sechs Projekten je Kategorie, Filmraum, sechs reale virtuelle Rundgänge, Digital Lab, KI-Angebotsentwurf, Team-Biografien und Kontakt. Acht Foto-Unterseiten und vier Rechtsseiten ergänzen die deutsche und englische Startseite.
 
 Das Originalportfolio bleibt vollständig: 117 Fotos, 18 Filmeinträge mit 17 unterschiedlichen Filmen, sechs Touren, vier Teammitglieder. Neue Filmvorschaubilder sind unveränderte Einzelbilder aus den jeweiligen Filmen. `creative-content.json` dokumentiert Originalquellen und Zuordnungen; `posters/posters.json` ordnet die neuen Vorschauen zu.
 
@@ -36,9 +36,13 @@ Die fertigen HTML-Dateien liegen im Repository. Für eine Neuerzeugung: Python 3
 
 - Alle 14 Seiten, lokalen Links, Bildziele und Original-Fotoanker geprüft.
 - Deutsche und englische Darstellung; Desktop und mobile Browsergrößen geprüft.
-- Fotofilter, Galerie-Navigation einschließlich Rückwärtsblättern am Ende, Filmfilter und echte Wiedergabe geprüft.
+- Fotofilter, vollständige Galerie-Navigation, Filmfilter und echte Wiedergabe geprüft.
 - Menü, Team-Biografien, native Bilddialoge, Pfeiltasten, Escape und Fokusretour geprüft.
 - Mobile lange Kapitel bleiben zwischen den Einrastpunkten frei scrollbar.
 - Kontaktentwurf geprüft; keine Testnachricht versendet.
 
 Die Prüfung nutzt Browser-Ansichten in verschiedenen Größen, keine physischen Mobilgeräte. Lokale Prüfbilder und die Übergabenotiz liegen unter `research/` und werden nicht veröffentlicht.
+
+## Designhilfen
+
+Impeccable (https://github.com/pbakaus/impeccable) und Taste Skill (https://github.com/Leonxlnx/taste-skill) wurden geprüft und lokal installiert. Die Nutzeranweisung, die ursprüngliche ESTATESTAR-DNA zu erhalten, hat Vorrang vor generischen Skill-Vorschlägen. Entscheidungen und Quellen sind in `PRODUCT.md` und `DESIGN.md` dokumentiert.

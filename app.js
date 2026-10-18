@@ -141,41 +141,12 @@
   document.querySelectorAll('[data-video]').forEach(button => button.addEventListener('click', () => openVideo(button)));
 
   const rail = document.querySelector('.photo-rail');
-  const counter = document.querySelector('.photo-counter');
-  const previous = document.querySelector('[data-rail="prev"]');
-  const next = document.querySelector('[data-rail="next"]');
-  function visiblePhotos() { return [...rail.querySelectorAll('.photo-card:not([hidden])')]; }
-  function currentPhoto() {
-    const left = rail.getBoundingClientRect().left;
-    const cards = visiblePhotos();
-    let index = 0, distance = Infinity;
-    cards.forEach((card, i) => { const gap = Math.abs(card.getBoundingClientRect().left - left); if (gap < distance) { distance = gap; index = i; } });
-    if (Math.ceil(rail.scrollLeft + rail.clientWidth) >= rail.scrollWidth - 4 && rail.scrollLeft > 0) index = cards.length - 1;
-    return index;
-  }
-  function updateRail() {
-    const cards = visiblePhotos(), index = currentPhoto();
-    counter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
-    previous.disabled = rail.scrollLeft < 2;
-    next.disabled = Math.ceil(rail.scrollLeft + rail.clientWidth) >= rail.scrollWidth - 4;
-  }
-  rail.addEventListener('scroll', updateRail, { passive: true });
-  addEventListener('resize', updateRail, { passive: true });
   document.querySelectorAll('[data-photo-filter]').forEach(button => button.addEventListener('click', () => {
     document.querySelectorAll('[data-photo-filter]').forEach(tab => tab.setAttribute('aria-pressed', String(tab === button)));
     rail.querySelectorAll('.photo-card').forEach(card => { card.hidden = card.dataset.category !== button.dataset.photoFilter; });
     const all = document.querySelector('.all-photos');
     all.href = JSON.parse(all.dataset.routes)[button.dataset.photoFilter];
-    rail.scrollTo({ left: 0, behavior: 'instant' }); updateRail();
   }));
-  for (const [button, delta] of [[previous, -1], [next, 1]]) button.addEventListener('click', () => {
-    const maximum = rail.scrollWidth - rail.clientWidth;
-    const offsets = [...new Set(visiblePhotos().map(card => Math.min(maximum, Math.max(0,
-      Math.round(rail.scrollLeft + card.getBoundingClientRect().left - rail.getBoundingClientRect().left)))))];
-    const target = delta < 0 ? offsets.filter(offset => offset < rail.scrollLeft - 2).at(-1) : offsets.find(offset => offset > rail.scrollLeft + 2);
-    rail.scrollTo({ left: target ?? (delta < 0 ? 0 : maximum), behavior: behavior() });
-  });
-  updateRail();
 
   document.querySelectorAll('[data-film-filter]').forEach(button => button.addEventListener('click', () => {
     const category = button.dataset.filmFilter;
@@ -195,7 +166,7 @@
       if (link.classList.contains('tour-visual')) link.setAttribute('aria-label', tour.title + ' – ' + text('virtuelle Tour öffnen', 'open virtual tour'));
     });
     const image = document.getElementById('tour-image'); image.src = tour.image; image.alt = tour.title;
-    document.querySelector('.tour-caption').textContent = tour.title.toUpperCase();
+    document.querySelector('.tour-caption').textContent = tour.title;
   });
   const concepts = [...document.querySelectorAll('.ki-option')];
   concepts.forEach(detail => detail.addEventListener('toggle', () => {
