@@ -12,19 +12,19 @@ Die ersten beiden Projekte bleiben unverändert. Die dritte Version wird ausschl
 
 ## Gestaltung und Inhalt
 
-Originalschriften Michroma und Eurostile, Schwarz-Weiß und Originalorange statt Beige, dekorativer Zusatzstern entfernt. Filmischer Einstieg, native magnetische Kapitel auf Desktop und Mobil, große Fotowand mit sechs Projekten je Kategorie, Filmraum, sechs reale virtuelle Rundgänge, Digital Lab, KI-Angebotsentwurf, Team-Biografien und Kontakt. Acht Foto-Unterseiten und vier Rechtsseiten ergänzen die deutsche und englische Startseite.
+Originalschriften Michroma und Eurostile, Schwarz-Weiß und Originalorange statt Beige, dekorativer Zusatzstern entfernt. Filmischer Einstieg, native magnetische Kapitel auf Desktop und Mobil, Fotogalerie mit zwei großen Spalten auf Desktop und einer auf Mobilgeräten, sechs Projekten je Kategorie, Filmraum, sechs reale virtuelle Rundgänge, Digital Lab, KI-Angebotsentwurf, Team-Biografien und Kontakt. Acht Foto-Unterseiten und vier Rechtsseiten ergänzen die deutsche und englische Startseite.
 
 Das Originalportfolio bleibt vollständig: 117 Fotos, 18 Filmeinträge mit 17 unterschiedlichen Filmen, sechs Touren, vier Teammitglieder. Neue Filmvorschaubilder sind unveränderte Einzelbilder aus den jeweiligen Filmen. `creative-content.json` dokumentiert Originalquellen und Zuordnungen; `posters/posters.json` ordnet die neuen Vorschauen zu.
 
-KI-Leistungen sind als Angebotsentwurf gekennzeichnet. Die dortigen Bilder sind ausdrücklich Originalaufnahmen als mögliche Arbeitsgrundlage, keine KI-Ergebnisse. Es gibt keine erfundenen Kundenreferenzen oder Erfolgszahlen.
+KI-Leistungen sind als Angebotsentwurf gekennzeichnet. Der Bereich benennt drei geplante Leistungen ohne simulierte Bildbeweise. Es gibt keine erfundenen Kundenreferenzen oder Erfolgszahlen.
 
 ## Betrieb
 
 Statische Dateien ohne Framework, Build-Service, Tracking oder Formular-Backend. GitHub Pages veröffentlicht den Stammordner von `main`; `.nojekyll` verhindert Jekyll-Verarbeitung. Alle Testseiten sind mit `noindex,nofollow` versehen.
 
-Fotos, Logos, Schriften und vollständige Filme verwenden bewusst die bereits veröffentlichten Originalmedien unter `/estatestar-preview/`. Das Original-Repository muss deshalb erreichbar bleiben. Die 17 neuen Film-Poster liegen in diesem Repository. Externe Touren werden erst durch einen aktiven Link in einem neuen Tab geöffnet.
+Fotos, Logos, Schriften und vollständige Filme verwenden bewusst die bereits veröffentlichten Originalmedien unter `/estatestar-preview/`. Das Original-Repository muss deshalb erreichbar bleiben. Die 17 Film-Poster und der textfreie Hero-Ausschnitt liegen in diesem Repository. Der Hintergrund stammt aus dem bestehenden Airpark-Film, 00:18–00:26: acht Sekunden, stumm, 1280×720 auf Desktop und 720×1280 mobil. Der vollständige Showreel bleibt unverändert erreichbar. Externe Touren werden erst durch einen aktiven Link in einem neuen Tab geöffnet.
 
-Das Kontaktformular bereitet ausschließlich einen `mailto:`-Entwurf vor. Es sendet keine Nachricht und speichert keine Formulardaten auf einem Server. Animationen und Einrasten respektieren `prefers-reduced-motion`. Hintergrundfilme pausieren außerhalb des sichtbaren Kapitels, in Dialogen und bei inaktivem Browser-Tab. Pausen- und Snap-Auswahl werden für die Browsersitzung gespeichert.
+Das Kontaktformular bereitet ausschließlich einen `mailto:`-Entwurf vor. Es sendet keine Nachricht und speichert keine Formulardaten auf einem Server. Animationen und Einrasten respektieren `prefers-reduced-motion`. Hintergrundfilme pausieren außerhalb des sichtbaren Kapitels, in Dialogen und bei inaktivem Browser-Tab. Pausen- und Snap-Auswahl werden für die Browsersitzung gespeichert. Das Einrasten lässt sich sowohl im Menü als auch im Footer umschalten.
 
 ## Lokal ansehen und aktualisieren
 
@@ -37,7 +37,7 @@ Die fertigen HTML-Dateien liegen im Repository. Für eine Neuerzeugung: Python 3
 - Alle 14 Seiten, lokalen Links, Bildziele und Original-Fotoanker geprüft.
 - Deutsche und englische Darstellung; Desktop und mobile Browsergrößen geprüft.
 - Fotofilter, vollständige Galerie-Navigation, Filmfilter und echte Wiedergabe geprüft.
-- Menü, Team-Biografien, native Bilddialoge, Pfeiltasten, Escape und Fokusretour geprüft.
+- Menü, Team-Biografien, native Bilddialoge, Pfeiltasten, Escape und Fokusführung geprüft; Menü-Kapitelwechsel fokussiert nun die Zielüberschrift.
 - Mobile lange Kapitel bleiben zwischen den Einrastpunkten frei scrollbar.
 - Kontaktentwurf geprüft; keine Testnachricht versendet.
 

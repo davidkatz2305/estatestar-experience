@@ -6,16 +6,17 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const mobile = matchMedia('(max-width: 760px)');
   const motionButton = document.querySelector('.motion-toggle');
-  const snapButton = document.querySelector('.snap-toggle');
+  const snapButtons = [...document.querySelectorAll('.snap-toggle')];
   const ambientVideos = [...document.querySelectorAll('video.ambient')];
   const sections = [...document.querySelectorAll('main > .chapter')];
-  const progressLinks = [...document.querySelectorAll('.chapter-progress a')];
+  const progressLinks = [...document.querySelectorAll('.header-nav [data-section]')];
   const menu = document.getElementById('navigation');
   const media = document.getElementById('media-dialog');
   const mediaContent = media.querySelector('.media-content');
   let paused = reduced.matches;
   let snap = true;
   let opener = null;
+  let navigationTarget = null;
   try {
     paused = reduced.matches || sessionStorage.getItem('estate-motion') === 'paused';
     snap = sessionStorage.getItem('estate-snap') !== 'off';
@@ -57,11 +58,13 @@
   function updateSnap() {
     const enabled = snap && !reduced.matches;
     document.documentElement.dataset.snap = enabled ? 'on' : 'off';
-    snapButton.setAttribute('aria-pressed', String(enabled));
-    snapButton.textContent = enabled ? text('Einrasten: an', 'Snap: on') : text('Einrasten: aus', 'Snap: off');
-    snapButton.disabled = reduced.matches;
+    snapButtons.forEach(button => {
+      button.setAttribute('aria-pressed', String(enabled));
+      button.textContent = enabled ? text('Einrasten: an', 'Snap: on') : text('Einrasten: aus', 'Snap: off');
+      button.disabled = reduced.matches;
+    });
   }
-  snapButton.addEventListener('click', () => { snap = !snap; remember('estate-snap', snap ? 'on' : 'off'); updateSnap(); });
+  snapButtons.forEach(button => button.addEventListener('click', () => { snap = !snap; remember('estate-snap', snap ? 'on' : 'off'); updateSnap(); }));
   reduced.addEventListener('change', () => { updateMotionButton(); updateSnap(); updateAmbient(); });
   document.addEventListener('visibilitychange', updateAmbient);
   let scrollQueued = false;
@@ -108,7 +111,12 @@
         if (video) { video.pause(); video.removeAttribute('src'); video.load(); }
         mediaContent.replaceChildren();
       }
-      if (opener && opener.isConnected) opener.focus({ preventScroll: true });
+      if (dialog === menu && navigationTarget) {
+        const destination = navigationTarget.querySelector('h1, h2') || navigationTarget;
+        destination.tabIndex = -1;
+        destination.focus({ preventScroll: true });
+        navigationTarget = null;
+      } else if (opener && opener.isConnected) opener.focus({ preventScroll: true });
       opener = null;
       updateAmbient();
     });
@@ -117,6 +125,7 @@
   menu.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', event => {
     event.preventDefault();
     const target = document.querySelector(link.getAttribute('href'));
+    navigationTarget = target;
     menu.close();
     if (target) requestAnimationFrame(() => { target.scrollIntoView({ behavior: behavior() }); history.replaceState(null, '', '#' + target.id); });
   }));
@@ -172,7 +181,6 @@
   concepts.forEach(detail => detail.addEventListener('toggle', () => {
     if (!detail.open) return;
     concepts.forEach(other => { if (other !== detail) other.open = false; });
-    document.getElementById('ki-image').src = detail.dataset.image;
   }));
   document.querySelectorAll('[data-person]').forEach(button => button.addEventListener('click', () => {
     const person = data.team[Number(button.dataset.person)];

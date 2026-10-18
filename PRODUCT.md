@@ -7,3 +7,5 @@ ESTATESTAR is a Berlin architecture photography, film and 360° studio. The audi
 The third GitHub Pages site is the editable design study: https://davidkatz2305.github.io/estatestar-experience/. Keep estatestar-preview (the original reconstruction) and estatestar-optimiert (the first optimization) unchanged. Work in DE and EN; preserve all 117 photographs, film entries, six tours, team biographies, contact routes and original legal text.
 
 David's corrections: the preceding iteration felt generic and AI-generated. Preserve the original brand DNA. Remove the added eight-ray asterisk everywhere; retain the original logo. Native magnetic chapter scrolling is wanted on desktop and mobile, with an opt-out and respect for reduced-motion settings.
+
+Latest correction (2026-10-18): David still found the brand-restored version odd and asked for a critique against good design standards followed by implementation. The original fonts and identity remain; our previous large title treatment, tiny UI and six-up contact-sheet layout are superseded by work-first hierarchy, restrained headings and readable controls.

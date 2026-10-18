@@ -38,7 +38,7 @@ def header(lang: str, de_slug: str, en_slug: str, gallery: bool) -> str:
     back = ('Back to photography' if lang == 'en' else 'Zur Fotografie') if gallery else ('Back to home' if lang == 'en' else 'Zur Startseite')
     return f'''<a class="skip-link" href="#main">{'Skip to content' if lang == 'en' else 'Zum Inhalt'}</a>
 <header class="site-header"><a class="brand" href="{home(lang)}" aria-label="ESTATESTAR — {'Home' if lang == 'en' else 'Startseite'}"><img src="{ESC(DATA['brandAssets']['logoBlack'])}" alt="ESTATESTAR" width="180" height="40"></a>
-<div class="header-tools"><a class="back-link" href="{home(lang, '#photo' if gallery else '')}">{BACK}<span>{back}</span></a><nav class="languages" aria-label="{'Language' if lang == 'en' else 'Sprache'}"><a href="../{de_slug}/" lang="de" hreflang="de" {'aria-current="page"' if lang == 'de' else ''}>DE</a><a href="../{en_slug}/" lang="en" hreflang="en" {'aria-current="page"' if lang == 'en' else ''}>EN</a></nav></div></header>'''
+<div class="header-tools"><a class="back-link" aria-label="{back}" href="{home(lang, '#photo' if gallery else '')}">{BACK}<span>{back}</span></a><nav class="languages" aria-label="{'Language' if lang == 'en' else 'Sprache'}"><a href="../{de_slug}/" lang="de" hreflang="de" {'aria-current="page"' if lang == 'de' else ''}>DE</a><a href="../{en_slug}/" lang="en" hreflang="en" {'aria-current="page"' if lang == 'en' else ''}>EN</a></nav></div></header>'''
 
 
 def footer(lang: str) -> str:
